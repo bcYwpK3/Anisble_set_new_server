@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: set_new_server
   author: bcYwpK3
   description: Initial configuration of newly installed Linux system
   company: Onlolikon
