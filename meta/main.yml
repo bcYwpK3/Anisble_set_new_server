@@ -18,4 +18,6 @@ galaxy_info:
     - CentOS
     - RedHat
 
-dependencies: []
+dependencies:
+    - selinux
+    - timesync
