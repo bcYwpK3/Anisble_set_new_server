@@ -19,5 +19,5 @@ galaxy_info:
     - RedHat
 
 dependencies:
-    - selinux
-    - timesync
+    - rhel-system-roles.selinux
+    - rhel-system-roles.timesync 
