@@ -1,0 +1,66 @@
+---
+# tasks file for reload_system
+
+- name: Set security limits
+  lineinfile:
+    dest: /etc/security/limits.conf
+    regexp: "^'* - nofile 65535'"
+    line: '* - nofile 65535'
+    state: present
+
+- name: Stop firewalld
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
+    
+- name: Set firewall SSH port    
+  firewalld:
+    port: 22/tcp
+    permanent: yes
+    immediate: yes
+    state: enabled
+
+- name: Update Packages
+  yum:
+    name: "*"
+    state: latest
+
+- name: Remove postfix 
+  yum:
+    name: postfix
+    state: absent
+
+- name: Install base Packages
+  yum:
+    name: "{{ YUM_PACKAGES }}"
+    state: present
+
+- name: Create directory
+  file:
+    path: "{{ item }}"
+    recurse: yes
+    state: directory 
+  loop: "{{ MKDIR }}"
+
+- name: Create user
+  user:
+    name: "{{ item['NAME'] }}"
+    password: "{{ PASSWORD }}"
+    state: present
+  loop: "{{ USERLIST }}"
+
+- name: Set user sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: "^{{ item['NAME'] }}"
+    line: "{{ item['NAME'] }}    ALL=(ALL)       NOPASSWD: ALL"
+    validate: '/usr/sbin/visudo -cf %s' 
+    state: present
+  loop: "{{ USERLIST }}"
+
+- name: Set ssh
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+  notify: restart ssh

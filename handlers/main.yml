@@ -1,0 +1,16 @@
+---
+# handlers file for reload_system
+- name: set epel repository
+  shell: >
+         /usr/bin/sed -e 's!^metalink=!#metalink=!g' -e 's!^#baseurl=!baseurl=!g' -e 's!//download\.fedoraproject\.org/pub!//mirrors.tuna.tsinghua.edu.cn!g' -e 's!//download\.example/pub!//mirrors.tuna.tsinghua.edu.cn!g' -e 's!http://mirrors!https://mirrors!g' -i /etc/yum.repos.d/epel*.repo
+
+- name: Update epel packages
+  yum:
+    name: '*'
+    state: latest
+  listen: set epel repository
+
+- name: restart ssh
+  service:
+     name: sshd
+     state: restarted

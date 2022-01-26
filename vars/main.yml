@@ -1,0 +1,17 @@
+---
+# vars file for reload_system
+USERLIST:
+  - NAME: bob
+  - NAME: Mike
+
+PASSWORD: $6$r16hjUiSWSghcdSh$s3/rcc7ETEKchuw5LlEyxr79yiIJSwhZZBrjX9foH2w/OgTd7Bfv0hKWBzbqqxqzFavZk4Mp9xeG/dfWC6iqG1
+
+YUM_PACKAGES:
+  - epel-release
+  - vim
+  - lrzsz
+  - wget
+  - curl
+  - bash-completion
+
+SSH_PORT: '22'
