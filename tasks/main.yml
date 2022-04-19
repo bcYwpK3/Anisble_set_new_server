@@ -14,12 +14,12 @@
     state: started
     enabled: yes
     
-- name: Set firewall SSH port    
-  firewalld:
-    port: 22/tcp
-    permanent: yes
-    immediate: yes
-    state: enabled
+#- name: Set firewall SSH port    
+#  firewalld:
+#    port: 22/tcp
+#    permanent: yes
+#    immediate: yes
+#    state: enabled
 
 - name: Update Packages
   yum:
