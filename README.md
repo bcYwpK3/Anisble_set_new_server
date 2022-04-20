@@ -2,6 +2,7 @@ Automation system configuration
 =========
 
 This is a role that completes the preliminary work of the server in batches. It can complete the basic general deployment
+[!image](https://github.com/bcYwpK3/Automation-system-configuration/blob/main/Screenshots.jpg)
 
 Requirements
 ------------
