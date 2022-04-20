@@ -61,7 +61,7 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
               - rhel-system-roles.selinux
               - rhel-system-roles.timesync
-              - reload_system
+              - Automation-system-configuration-?.?.?	#version
 
 
 License
