@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: initial-system-configuration
+  role_name: initial_system_configuration
   author: bcYwpK3
   description: Initial configuration of newly installed Linux system
   company: Onlolikon
